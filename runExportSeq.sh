@@ -1,4 +1,5 @@
 #!/bin/bash
+SEQ_CLI_PATH="/mnt/d/take/ArquivosAnaliseLog/seqcli-2020.4.365-linux-x64/"
 DATE_UNIX_ERA=$(date -u +%s)
 echo $DATE_UNIX_ERA
 echo $(date -u --date=@$DATE_UNIX_ERA)
@@ -23,6 +24,5 @@ if [ $INICIAL_HOUR -lt 10 ]; then
     INICIAL_HOUR=$(echo '0'$INICIAL_HOUR)
     echo $INICIAL_HOUR
 fi
-cd /mnt/d/take/ArquivosAnaliseLog/seqcli-2020.4.365-linux-x64/
+cd $SEQ_CLI_PATH
 ./seqcli query -q="select * from stream where Application = 'claro-faturamento' and  @Level = 'Debug' limit 100000" --start="$INICIAL_YEAR-$INICIAL_MONTH-$INICIAL_DAY"T"$INICIAL_HOUR:00:00.000Z" --end="$INICIAL_YEAR-$INICIAL_MONTH-$FINAL_DAY"T"$INICIAL_HOUR:59:59.000Z" >files_$INICIAL_YEAR-$INICIAL_MONTH-$FINAL_DAY-$INICIAL_HOUR.txt
-# wput files_$INICIAL_YEAR-$INICIAL_MONTH-$FINAL_DAY-$INICIAL_HOUR.txt ftp://root:dev123@192.168.0.1/sda2/take/logs/files_$INICIAL_YEAR-$INICIAL_MONTH-$FINAL_DAY-$INICIAL_HOUR.txt
