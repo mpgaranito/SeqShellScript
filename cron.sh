@@ -21,4 +21,4 @@
 # For more information see the manual pages of crontab(5) and cron(8)
 # 
 # m h  dom mon dow   command
-0 * * * * /mnt/d/take/ArquivosAnaliseLog/roda.sh >> /home/mgaranito/x.txt
+0 * * * * /mnt/d/take/ArquivosAnaliseLog/runExportSeq.sh >> /home/mgaranito/x.txt
